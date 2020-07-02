@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ValueInputComponent } from './value-input/value-input.component';
 import { RollValuesComponent } from './roll-values/roll-values.component';
 import { RollingComponent } from './rolling/rolling.component';
+import { DieComponent } from './die/die.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ValueInputComponent,
     RollValuesComponent,
-    RollingComponent
+    RollingComponent,
+    DieComponent
   ],
   imports: [
     BrowserModule,

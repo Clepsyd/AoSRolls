@@ -1,6 +1,16 @@
 <div class="dice-container">
-  <div class="dice-div" *ngFor="let die of dice">
-    <img class="dice-img" src="../../assets/dice/dice-six-faces-{{ die }}.svg" alt="">
+  <app-die *ngFor="let die of dice; index as i;" (click)="substractRank(i)" [index]="i" [value]="die"></app-die>
+</div>
+<div *ngIf="!rolling">
+  <div *ngIf="values.rank > 0">
+    <small>Use your rank by clicking on the dice</small>
+    <div>
+      <small>Your rank: </small>{{ values.rank }}
+    </div>
+  </div>
+  <div>
+    <small>Your successes: </small>{{ result }}
   </div>
 </div>
-<div class="button-roll" (click)="roll()">Roll!</div>
+
+<div class="button-roll" (click)="stopRoll()">Roll!</div>

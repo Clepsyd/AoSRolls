@@ -2,16 +2,9 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   height: 50vh;
-}
-
-.dice-div {
-  height: 30%;
-}
-
-.dice-img {
-  height: 100%;
 }
 
 .button-roll {

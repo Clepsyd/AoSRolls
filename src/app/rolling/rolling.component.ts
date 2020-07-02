@@ -9,8 +9,10 @@ import { Values } from '../app.models';
 export class RollingComponent implements OnInit, OnDestroy {
   @Input() values: Values;
   dice: number[];
+  originalRolls: number[];
   interval: any;
   rolling: boolean;
+  result: number;
   constructor() { }
 
   ngOnInit(): void {
@@ -30,12 +32,32 @@ export class RollingComponent implements OnInit, OnDestroy {
     }
   }
 
-  roll() {
+  stopRoll(): void {
     clearInterval(this.interval);
+    this.rolling = false;
+    this.originalRolls = [...this.dice];
+    this.result = this.getResult();
   }
 
   getRand(): number {
     return Math.floor(Math.random() * 6) + 1;
+  }
+
+  substractRank(index: number): void {
+    if (this.values.rank > 0 && this.dice[index] > 1) {
+      this.dice[index] -= 1;
+      this.values.rank -= 1;
+    }
+    this.result = this.getResult();
+  }
+
+  getResult() {
+    const total = this.dice.reduce((acc, value) => acc + value, 0);
+    if (total > this.values.al) {
+      return 0
+    } else {
+      return 1 + this.dice.filter(die => die === 1).length;
+    }
   }
 
   ngOnDestroy(): void {
