@@ -1,0 +1,38 @@
+.label {
+  margin: 20px 0 0 0 ;
+  font-style: italic;
+  text-align: center;
+}
+
+.container {
+  margin: auto;
+  display: flex;
+  width: 250px;
+}
+
+.button-plus, .button-minus, .display {
+  font-size: 2em;
+  text-align: center;
+  border: solid 1px rgb(10, 49, 75);
+  box-sizing: border-box;
+  background-color: white;
+  padding: 0;
+}
+
+.button-plus, .button-minus {
+  flex-basis: 25%;
+  cursor: pointer;
+}
+
+.button-minus {
+  border-radius: 20px 0 0 20px;
+}
+
+.button-plus {
+  border-radius: 0 20px 20px 0;
+}
+
+.display {
+  flex-basis: 50%;
+  cursor: default;
+}

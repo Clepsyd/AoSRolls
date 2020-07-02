@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Noto Sans JP';
+  color:rgb(10, 49, 75);
+  margin: 0;
+}

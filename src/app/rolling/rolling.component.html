@@ -1,0 +1,6 @@
+<div class="dice-container">
+  <div class="dice-div" *ngFor="let die of dice">
+    <img class="dice-img" src="../../assets/dice/dice-six-faces-{{ die }}.svg" alt="">
+  </div>
+</div>
+<div class="button-roll" (click)="roll()">Roll!</div>

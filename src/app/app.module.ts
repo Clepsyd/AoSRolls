@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ValueInputComponent } from './value-input/value-input.component';
+import { RollValuesComponent } from './roll-values/roll-values.component';
+import { RollingComponent } from './rolling/rolling.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ValueInputComponent,
+    RollValuesComponent,
+    RollingComponent
   ],
   imports: [
     BrowserModule,
