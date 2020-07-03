@@ -1,6 +1,6 @@
-<div>
-  <label for="savedRolls">Choose a previous roll: </label>
-  <select name="savedRolls">
-    <option *ngFor="let savedRoll of savedRolls" value="savedRoll" (click)="onSelect(savedRoll)">{{ savedRoll.name }}</option>
-  </select>
+<div class="container" *ngIf="savedRolls.length > 0">
+  <small>Choose a previous roll: </small>
+  <div class="rolls-list">
+    <div class="saved-roll" *ngFor="let savedRoll of savedRolls" value="savedRoll" (click)="onSelect(savedRoll)">{{ savedRoll.name }}</div>
+  </div>
 </div>

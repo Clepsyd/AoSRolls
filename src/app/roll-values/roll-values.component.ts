@@ -9,21 +9,25 @@ import { Values } from "../app.models";
 })
 export class RollValuesComponent {
   constructor(
-    private rollStorageService: RollStorageService
+    private rollStorage: RollStorageService
   ) {}
 
   @Input() values: Values;
   @Output() valuesUpdate = new EventEmitter<Values>();
   @Input() rollName: string;
+  message = '';
+
 
   submit() {
     this.valuesUpdate.emit(this.values);
     if (!!this.rollName) {
-      this.rollStorageService.addRoll({
+      let response = this.rollStorage.createOrUpdate({
         name: this.rollName,
         ...this.values
       });
+      let action = response.created ? "saved" : "updated";
+      this.message = `Your roll was ${action}.`;
+      console.log(this.message)
     }
-    alert("Your roll was saved.")
   }
 }
