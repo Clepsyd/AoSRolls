@@ -1,4 +1,6 @@
 <div class="container">
+  <div class="label">What are you rolling for ? (skill, attack etc...)</div>
+  <input [(ngModel)]="rollName" #ctrl="ngModel">
   <app-value-input (valueSelected)="values.nDice = $event" [value]="values.nDice" [label]="'Number of dice'"></app-value-input>
   <app-value-input (valueSelected)="values.al = $event" [value]="values.al" [label]="'AL (Aptitude Level)'"></app-value-input>
   <app-value-input (valueSelected)="values.rank = $event" [value]="values.rank" [label]="'Rank'"></app-value-input>

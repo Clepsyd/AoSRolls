@@ -1,6 +1,13 @@
 .container {
   max-width: 80%;
   margin: auto;
+  text-align: center;
+}
+
+.label {
+  margin: 20px 0 0 0 ;
+  font-style: italic;
+  text-align: center;
 }
 
 .button-roll {

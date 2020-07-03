@@ -7,3 +7,10 @@ export enum State {
   ROLLING,
   ROLLED
 }
+
+export interface StoredRoll {
+  name: string,
+  nDice: number,
+  al: number,
+  rank: number
+}

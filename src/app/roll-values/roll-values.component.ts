@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Inject } from '@angular/core';
+import { RollStorageService } from "../services/roll-storage.service";
 import { Values } from "../app.models";
 
 @Component({
@@ -7,10 +8,22 @@ import { Values } from "../app.models";
   styleUrls: ['./roll-values.component.css']
 })
 export class RollValuesComponent {
+  constructor(
+    private rollStorageService: RollStorageService
+  ) {}
+
   @Input() values: Values;
   @Output() valuesUpdate = new EventEmitter<Values>();
+  @Input() rollName: string;
 
   submit() {
-    this.valuesUpdate.emit(this.values)
+    this.valuesUpdate.emit(this.values);
+    if (!!this.rollName) {
+      this.rollStorageService.addRoll({
+        name: this.rollName,
+        ...this.values
+      });
+    }
+    alert("Your roll was saved.")
   }
 }

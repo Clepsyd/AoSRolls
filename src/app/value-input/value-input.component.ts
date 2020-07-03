@@ -20,7 +20,7 @@ export class ValueInputComponent implements OnInit {
 
   valueUpdate(value: number) {
     let newValue = this.value + value;
-    if (1 <= newValue && newValue <= this.maxValue) {
+    if (newValue >= 0 && newValue <= this.maxValue) {
       this.value = newValue;
       this.valueSelected.emit(this.value);
     }

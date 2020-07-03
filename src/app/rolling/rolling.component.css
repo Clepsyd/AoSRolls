@@ -22,3 +22,36 @@
   border-radius: 20px;
   box-sizing: border-box;
 }
+
+.display-container {
+  text-align: center;
+}
+
+.value-display {
+  margin: auto;
+  font-size: 2em;
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  line-height: 2em;
+}
+
+.red {
+  background-color: darkred;
+  color: whitesmoke;
+}
+
+.green {
+  background-color: green;
+  color: whitesmoke;
+}
+
+.rank {
+  background-color: lemonchiffon;
+}
+
+small {
+  font-style: italic;
+}
