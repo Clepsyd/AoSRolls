@@ -9,6 +9,7 @@ import { StoredRoll } from '../app.models';
 export class SavedRollsComponent {
   @Input() savedRolls: StoredRoll[];
   @Output() select = new EventEmitter<StoredRoll>();
+  open: boolean;
 
   onSelect(savedRoll: StoredRoll) {
     this.select.emit(savedRoll);

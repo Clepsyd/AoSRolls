@@ -1,11 +1,13 @@
 <div class="container" [ngSwitch]="state">
-  <div class="header">
-    <div class="title-banner">
-      <span class="title">Age of Swords</span>
-      <span class="subtitle">Dice Rolls</span>
+  <div class="title-banner">
+    <div class="menu" (click)="goHome()">
+      <i class="fas fa-home"></i>
     </div>
-    <app-saved-rolls *ngSwitchCase="states.LOADED" [savedRolls]="savedRolls" (select)="setSavedRoll($event)"></app-saved-rolls>
+    <span class="title">Age of Swords</span>
+    <span class="subtitle">Dice Rolls</span>
   </div>
+  <app-saved-rolls *ngSwitchCase="states.LOADED" [savedRolls]="savedRolls" (select)="setSavedRoll($event)"></app-saved-rolls>
+
   <app-roll-values *ngSwitchCase="states.LOADED"
                    [rollName]="rollName"
                    [values]="values"
@@ -13,7 +15,6 @@
   ></app-roll-values>
   <app-rolling *ngSwitchCase="states.ROLLING" [values]="values"
   ></app-rolling>
-  <button (click)="goHome()">Home</button>
 </div>
 
 

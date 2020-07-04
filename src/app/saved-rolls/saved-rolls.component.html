@@ -1,6 +1,10 @@
-<div class="container" *ngIf="savedRolls.length > 0">
-  <small>Choose a previous roll: </small>
-  <div class="rolls-list">
-    <div class="saved-roll" *ngFor="let savedRoll of savedRolls" value="savedRoll" (click)="onSelect(savedRoll)">{{ savedRoll.name }}</div>
+<div class="container" *ngIf="savedRolls.length > 0" (click)="open = !open">
+  <div>Choose a previous roll <i class="fas fa-chevron-down"></i></div>
+  <div class="rolls-list" *ngIf="open">
+    <div class="saved-roll"
+         *ngFor="let savedRoll of savedRolls"
+         value="savedRoll"
+         (click)="onSelect(savedRoll)"
+         >{{ savedRoll.name }}</div>
   </div>
 </div>

@@ -4,10 +4,30 @@
   text-align: center;
 }
 
+input {
+  color: white;
+  background-color: rgb(10, 49, 75);
+  border: none;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  width: 200px;
+}
+
+input:placeholder-shown {
+  font-weight: normal;
+  color: skyblue;
+  font-style: italic;
+}
+
+input:active {
+  background-color: rgb(30, 80, 130);
+}
+
 .label {
-  margin: 20px 0 0 0 ;
   font-style: italic;
   text-align: center;
+  padding: 10px;
 }
 
 .button-roll {
@@ -24,4 +44,8 @@
 
   border-radius: 20px;
   box-sizing: border-box;
+}
+
+.button-roll:active {
+  background-color: steelblue;
 }

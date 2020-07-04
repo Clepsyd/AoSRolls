@@ -3,7 +3,9 @@
 }
 
 .dice-div {
-  height: 100%
+  height: 100%;
+  cursor: pointer;
+  transition: linear 1s;
 }
 
 .dice-img {
