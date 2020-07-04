@@ -19,11 +19,18 @@
 
 .saved-roll:last-child {
   border-radius: 0 0 10px 10px;
+  border: none;
+}
+
+.saved-roll:only-child {
+  border-radius: 10px;
 }
 
 .saved-roll {
   border-bottom: solid 1px white;
   box-sizing: border-box;
+  height: 50px;
+  line-height: 50px;
   color: white;
   background-color: rgb(10, 49, 75);
 }
