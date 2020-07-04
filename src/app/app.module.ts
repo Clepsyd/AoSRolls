@@ -11,6 +11,8 @@ import { RollValuesComponent } from './roll-values/roll-values.component';
 import { RollingComponent } from './rolling/rolling.component';
 import { DieComponent } from './die/die.component';
 import { SavedRollsComponent } from './saved-rolls/saved-rolls.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { SavedRollsComponent } from './saved-rolls/saved-rolls.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StorageServiceModule
+    StorageServiceModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
   ],
