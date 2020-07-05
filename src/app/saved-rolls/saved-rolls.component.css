@@ -34,3 +34,19 @@
   color: white;
   background-color: rgb(10, 49, 75);
 }
+
+.delete {
+  margin-bottom: 10px;
+}
+
+.choice {
+  padding: 10px;
+}
+
+.red-icon {
+  color: crimson;
+}
+
+.green-icon {
+  color: green;
+}

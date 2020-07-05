@@ -15,14 +15,15 @@ export class RollStorageService {
   createOrUpdate(roll: StoredRoll): {created: boolean, roll: StoredRoll} {
     let created: boolean;
     let rolls = this.getRolls() || [];
-    let existingRoll = this.findRoll(roll.name);
-    if (!!existingRoll) {
-      Object.keys(roll).forEach(key => existingRoll[key] = roll[key]);
+    let existingRollIndex = this.findRoll(roll.name);
+    if (existingRollIndex !== -1) {
+      rolls[existingRollIndex] = roll;
       created = false;
     } else {
       rolls.push(roll);
       created = true;
     }
+    console.log(rolls)
     this.storage.set(
       ROLLS_STORAGE_KEY,
       rolls.slice(Math.max(rolls.length - MAX_STORED_ROLLS, 0))
@@ -37,9 +38,15 @@ export class RollStorageService {
     return this.storage.get(ROLLS_STORAGE_KEY) || [];
   }
 
-  findRoll(rollName: string): StoredRoll | undefined {
-    return this.getRolls().filter(storedRoll => {
+  findRoll(rollName: string, rolls?: StoredRoll[]|undefined): number {
+    rolls = rolls || [];
+    rolls = rolls.length > 0 ? rolls : this.getRolls();
+    return this.getRolls().findIndex(storedRoll => {
       return storedRoll.name === rollName;
-    })[0];
+    });
+  }
+
+  clearRolls() {
+    this.storage.remove(ROLLS_STORAGE_KEY);
   }
 }
