@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RollStorageService } from "./services/roll-storage.service";
 import { State, Values, StoredRoll } from "./app.models";
 
-const DEFAULT_VALUES = {nDice: 1, al: 10, rank: 1}
+const DEFAULT_VALUES = {nDice: 1, sl: 10, rank: 1}
 
 @Component({
   selector: 'app-root',
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
     this.rollName = savedRoll.name
     this.values = {
       nDice: savedRoll.nDice,
-      al: savedRoll.al,
+      sl: savedRoll.sl,
       rank: savedRoll.rank,
     }
   }

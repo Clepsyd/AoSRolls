@@ -25,9 +25,8 @@ export class RollValuesComponent {
         name: this.rollName,
         ...this.values
       });
-      let action = response.created ? "saved" : "updated";
-      this.message = `Your roll was ${action}.`;
-      console.log(this.message)
+      console.log(response);
+      console.log(this.rollStorage.getRolls());
     }
   }
 }

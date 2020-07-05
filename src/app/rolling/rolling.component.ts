@@ -53,7 +53,7 @@ export class RollingComponent implements OnInit, OnDestroy {
 
   getResult() {
     const total = this.dice.reduce((acc, value) => acc + value, 0);
-    if (total > this.values.al) {
+    if (total > this.values.sl) {
       return 0
     } else {
       return 1 + this.dice.filter(die => die === 1).length;

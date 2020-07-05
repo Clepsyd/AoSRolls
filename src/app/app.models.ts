@@ -1,5 +1,5 @@
 export interface Values {
-  nDice: number, al: number, rank: number
+  nDice: number, sl: number, rank: number
 }
 
 export enum State {
@@ -11,6 +11,6 @@ export enum State {
 export interface StoredRoll {
   name: string,
   nDice: number,
-  al: number,
+  sl: number,
   rank: number
 }
