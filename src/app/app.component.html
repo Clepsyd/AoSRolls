@@ -3,7 +3,7 @@
     <div class="menu" (click)="goHome()">
       <i class="fas fa-home"></i>
     </div>
-    <span class="title">Age of Swords</span>
+    <span class="title">Age of the Sword</span>
     <span class="subtitle">Dice Rolls</span>
   </div>
   <app-saved-rolls *ngSwitchCase="states.LOADED" [savedRolls]="savedRolls" (select)="setSavedRoll($event)"></app-saved-rolls>
