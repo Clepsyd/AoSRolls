@@ -1,5 +1,11 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Values } from '../app.models';
+import { interval } from 'rxjs';
+
+enum Modes {
+  ROLL,
+  REROLL
+}
 
 @Component({
   selector: 'app-rolling',
@@ -7,46 +13,68 @@ import { Values } from '../app.models';
   styleUrls: ['./rolling.component.css']
 })
 export class RollingComponent implements OnInit, OnDestroy {
+  modes = Modes;
+  mode: Modes = Modes.ROLL;
   @Input() values: Values;
+  rankPool: number;
   dice: number[];
   originalRolls: number[];
-  interval: any;
+  intervals = [];
   rolling: boolean;
   result: number;
   constructor() { }
 
   ngOnInit(): void {
+    this.rankPool = this.values.rank;
     this.dice = Array(this.values.nDice);
-    this.updateDice(this.dice);
-    this.interval = setInterval(() => {
-      for (let index = 0; index < this.dice.length; index++) {
-        this.dice[index] = this.getRand();
-      }
-    }, 50);
+    for (let index = 0; index < this.dice.length; index++) {
+      this.intervals.push(this.rollDie(index));
+    }
     this.rolling = true;
   }
 
-  updateDice(dice: number[]): void {
-    for (let index = 0; index < dice.length; index++) {
-      dice[index] = this.getRand();
-    }
-  }
-
   stopRoll(): void {
-    clearInterval(this.interval);
+    this.clearIntervals();
+    this.mode = Modes.ROLL;
+    this.intervals = [];
     this.rolling = false;
     this.originalRolls = [...this.dice];
     this.result = this.getResult();
+  }
+
+  enableReroll() {
+    this.dice = [...this.originalRolls];
+    this.rankPool = this.values.rank;
+    this.mode = Modes.REROLL;
+    this.rolling = true;
   }
 
   getRand(): number {
     return Math.floor(Math.random() * 6) + 1;
   }
 
+  rollDie(index: number) {
+    return setInterval(() => {
+      this.dice[index] = this.getRand();
+    }, 50);
+  }
+
+  onDiceClick(index: number): void {
+    switch (this.mode) {
+      case Modes.ROLL:
+        this.substractRank(index);
+        break;
+
+      case Modes.REROLL:
+        this.intervals.push(this.rollDie(index));
+        break;
+    }
+  }
+
   substractRank(index: number): void {
-    if (this.values.rank > 0 && this.dice[index] > 1) {
+    if (this.rankPool > 0 && this.dice[index] > 1) {
       this.dice[index] -= 1;
-      this.values.rank -= 1;
+      this.rankPool -= 1;
     }
     this.result = this.getResult();
   }
@@ -60,8 +88,14 @@ export class RollingComponent implements OnInit, OnDestroy {
     }
   }
 
+  clearIntervals() {
+    this.intervals.forEach(interval => {
+      clearInterval(interval);
+    });
+  }
+
   ngOnDestroy(): void {
-    clearInterval(this.interval)
+    this.clearIntervals();
   }
 
 }

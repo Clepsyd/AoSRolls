@@ -1,12 +1,20 @@
 <div class="dice-container">
-  <app-die *ngFor="let die of dice; index as i;" (click)="substractRank(i)" [index]="i" [value]="die"></app-die>
+  <app-die *ngFor="let die of dice; index as i;" (click)="onDiceClick(i)" [index]="i" [value]="die"></app-die>
 </div>
+
+<div class="display-container">
+  <small *ngIf="!rolling">Use your rank by clicking on the dice</small>
+  <small *ngIf="rolling && mode === modes.REROLL">
+    Click on the dice you'd like to reroll.
+  </small>
+</div>
+
 <div class="display-container" *ngIf="!rolling">
-  <div *ngIf="values.rank > 0">
-    <small>Use your rank by clicking on the dice</small>
+  <div *ngIf="rankPool > 0">
+
     <div class="value-display rank">
       <div>
-        {{ values.rank }}
+        {{ rankPool }}
       </div>
     </div>
   </div>
@@ -17,4 +25,5 @@
   </div>
 </div>
 
-<div *ngIf="rolling" class="button-roll" (click)="stopRoll()">Roll!</div>
+<div *ngIf="rolling" class="button-roll" (click)="stopRoll()">{{mode === modes.ROLL ? 'Roll!' : 'Reroll!'}}</div>
+<div *ngIf="!rolling" class="button-roll green" (click)="enableReroll()">Reroll?</div>

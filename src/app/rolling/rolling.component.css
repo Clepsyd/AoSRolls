@@ -9,7 +9,7 @@
 
 .button-roll {
   cursor: pointer;
-  margin: 10vh auto;
+  margin: auto;
   width: 200px;
   padding: 1em 0;
 
@@ -24,6 +24,11 @@
 }
 
 .display-container {
+  text-align: center;
+  margin: 10px;
+}
+
+.help {
   text-align: center;
 }
 
